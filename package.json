@@ -1,0 +1,29 @@
+{
+  "name": "vite3-vscode-test",
+  "displayName": "vite3-vscode-test",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.68.0"
+  },
+  "activationEvents": [
+    "onCommand:vite3-vscode-test.helloWorld"
+  ],
+  "main": "./extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "vite3-vscode-test.helloWorld",
+        "title": "Hello World"
+      }
+    ]
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.68.0",
+    "@types/glob": "^7.2.0",
+    "@types/mocha": "^9.1.1",
+    "@types/node": "14.x",
+    "glob": "^8.0.1",
+    "mocha": "^9.2.2",
+    "@vscode/test-electron": "^2.1.3"
+  }
+}
