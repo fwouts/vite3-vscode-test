@@ -1,6 +1,8 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
 const vscode = require("vscode");
+const path = require("path");
+const vite = require("vite");
 
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
@@ -21,12 +23,21 @@ function activate(context) {
   let disposable = vscode.commands.registerCommand(
     "vite3-vscode-test.helloWorld",
     function () {
-      // The code you place here will be executed every time your command is executed
-
-      // Display a message box to the user
-      vscode.window.showInformationMessage(
-        "Hello World from vite3-vscode-test!"
-      );
+      vite
+        .createServer({
+          root: path.join(__dirname, "example"),
+        })
+        .then(async (server) => {
+          const port = 3100;
+          await server.listen(port);
+          vscode.window.showInformationMessage(
+            `Vite server ready at http://localhost:${port}`
+          );
+        })
+        .catch((e) => {
+          console.error(e);
+          vscode.window.showErrorMessage(e.stack || e.message);
+        });
     }
   );
 
