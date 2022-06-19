@@ -1,21 +1,30 @@
 {
   "name": "vite3-vscode-test",
+  "publisher": "fwouts",
   "displayName": "vite3-vscode-test",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fwouts/vite3-vscode-test"
+  },
   "version": "0.0.1",
   "engines": {
     "vscode": "^1.68.0"
   },
   "activationEvents": [
-    "onCommand:vite3-vscode-test.helloWorld"
+    "onCommand:vite3-vscode-test.run"
   ],
   "main": "./extension.js",
   "contributes": {
     "commands": [
       {
-        "command": "vite3-vscode-test.helloWorld",
-        "title": "Hello World"
+        "command": "vite3-vscode-test.run",
+        "title": "Start Vite 3 test"
       }
     ]
+  },
+  "scripts": {
+    "build": "vsce package",
+    "install": "code --install-extension ./vite3-vscode-test-0.0.1.vsix --force"
   },
   "dependencies": {
     "vite": "^3.0.0-alpha.12"
@@ -27,6 +36,7 @@
     "@types/vscode": "^1.68.0",
     "@vscode/test-electron": "^2.1.3",
     "glob": "^8.0.1",
-    "mocha": "^9.2.2"
+    "mocha": "^9.2.2",
+    "vsce": "^2.9.1"
   }
 }

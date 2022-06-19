@@ -21,7 +21,7 @@ function activate(context) {
   // Now provide the implementation of the command with  registerCommand
   // The commandId parameter must match the command field in package.json
   let disposable = vscode.commands.registerCommand(
-    "vite3-vscode-test.helloWorld",
+    "vite3-vscode-test.run",
     function () {
       vite
         .createServer({
@@ -31,7 +31,7 @@ function activate(context) {
           const port = 3100;
           await server.listen(port);
           vscode.window.showInformationMessage(
-            `Vite server ready at http://localhost:${port}`
+            `Success! Vite server ready at http://localhost:${port}`
           );
         })
         .catch((e) => {
